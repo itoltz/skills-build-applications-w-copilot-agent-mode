@@ -5,6 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+if (!process.env.REACT_APP_CODESPACE_URL) {
+  const codespaceName = process.env.CODESPACE_NAME || window.location.hostname.split('-')[0];
+  const protocol = window.location.protocol;
+  const port = window.location.port || '8000';
+  process.env.REACT_APP_CODESPACE_URL = `${protocol}//${codespaceName}-8000.app.github.dev`;
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
